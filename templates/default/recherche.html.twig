@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}Recherche{% endblock %}
+{% block body %}
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ trip.id }}</td>
+        </tr>
+        <tr>
+            <th>Date_start</th>
+            <td>{{ trip.dateStart ? trip.dateStart|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Date_end</th>
+            <td>{{ trip.dateEnd ? trip.dateEnd|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ trip.title }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ trip.description }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ trip.price }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

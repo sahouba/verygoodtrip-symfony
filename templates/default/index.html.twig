@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<h1>Very Good Trip</h1>
+
+<div class="">
+  <form  method="post">
+    <select  name="country">
+       <option value="0">Choisie une distination</option>
+      {% for country in countries %}
+            <option value="{{country.id}}">{{country.name}}</option>
+      {% endfor %}
+    </select>
+    <span>entre le</span>
+    <input type="date" name="date_start" value="">
+    <span>et le</span>
+    <input type="date" name="date_end" value="">
+    <span>Prix Max </span>
+    <input style:width="50px"type="tetx" name="price" value="">
+    <button  class="btn btn-primary">Recherche</button>
+  </form>
+</div>
+<!--Réponse au formulaire de recherche affichage de voyage-->
+<div class="">
+     {% if trips %}
+        {% if trips|length > 0 %}
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th>Intitué</th>
+              <th>Destination</th>
+                <th>Dates</th>
+                  <th>price</th>
+          </tr>
+              {% for trip in trips %}
+              <tr>
+                <td>{{trip.getTitle}}</td>
+                  <td>{{trip.getCountry.getName}}</td>
+                    <td>
+                      Du {{trip.getDateStart|date('d/m/Y')}}
+                      au {{trip.getDateEnd|date('d/m/Y')}}
+                    </td>
+                    <td>{{trip.getPrice}} €</td>
+              </tr>
+              {% endfor %}
+        </table>
+
+         {% endif %}
+     {% endif %}
+</div>
+{% endblock %}
